@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 const SymbolConfig = {
-  normal: "h-44 w-44",
-  large: "h-48 w-48",
+  normal: "md:h-44 md:w-44",
+  large: "md:h-48 md:w-48",
   winner:
     "mix-blend-lighten shadow-[0px_0px_0px_50px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_100px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_150px_hsl(214deg_47%_23%_/_50%)]",
 }
@@ -15,7 +15,7 @@ const Paper = ({ size = "normal", winner = false, onClick }) => (
       onClick && onClick()
     }}
     title="paper"
-    className={`z-10 flex ${SymbolConfig[size]} ${
+    className={`z-10 flex h-36 w-36 ${SymbolConfig[size]} ${
       winner && SymbolConfig["winner"]
     } cursor-pointer items-center justify-center rounded-full 
          border-[1.2rem] 
@@ -31,7 +31,7 @@ const Rock = ({ size = "normal", winner = false, onClick }) => (
       onClick && onClick()
     }}
     title="rock"
-    className={`z-10 flex ${SymbolConfig[size]} ${
+    className={`z-10 mt-8 flex h-36 w-36 ${SymbolConfig[size]} ${
       winner && SymbolConfig["winner"]
     } cursor-pointer items-center justify-center 
                self-center rounded-full border-[1.2rem] 
@@ -47,7 +47,7 @@ const Scissor = ({ size = "normal", winner = false, onClick }) => (
       onClick && onClick()
     }}
     title="scissors"
-    className={`z-10 flex ${SymbolConfig[size]} ${
+    className={`z-10  flex h-36 w-36 ${SymbolConfig[size]} ${
       winner && SymbolConfig["winner"]
     } cursor-pointer items-center justify-center rounded-full 
              border-[1.2rem] 

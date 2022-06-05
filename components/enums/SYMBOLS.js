@@ -1,5 +1,3 @@
-import React from "react"
-
 const SYMBOLS = {
   PAPER: "Paper",
   ROCK: "Rock",

@@ -25,9 +25,9 @@ const SymbolSelector = ({ setSelectedSymbol }) => {
         <img
           src="bg-triangle.svg"
           alt="traingle"
-          className="absolute left-16 top-16 select-none"
+          className="absolute left-[5.3rem] top-16 w-3/5 select-none md:left-16 md:w-auto"
         />
-        <div className="flex justify-between">
+        <div className="flex justify-around md:justify-between">
           <Symbol.Paper
             onClick={() => {
               setSelectedSymbol("Paper")
@@ -50,8 +50,8 @@ const SymbolSelector = ({ setSelectedSymbol }) => {
 }
 
 const SymbolCard = ({ title, symbol }) => (
-  <div className="flex h-60 flex-col items-center justify-between transition-all">
-    <h6 className="text-xl text-white">{title}</h6>
+  <div className="flex h-52 flex-col items-center justify-between transition-all md:h-60">
+    <h6 className="text-md text-white md:text-xl">{title}</h6>
     {symbol === SYMBOLS.PAPER && <Symbol.Paper size="large" />}
     {symbol === SYMBOLS.SCISSOR && <Symbol.Scissor size="large" />}
     {symbol === SYMBOLS.ROCK && <Symbol.Rock size="large" />}
@@ -59,7 +59,7 @@ const SymbolCard = ({ title, symbol }) => (
 )
 
 const MatchStatus = ({ matchStat, resetGamePlay }) => (
-  <div className="flex flex-col items-center justify-center transition-all">
+  <div className="absolute bottom-24 left-24 transition-all md:static md:flex md:flex-col md:items-center md:justify-center">
     <h3 className="white font-barlow text-5xl font-extrabold text-white">
       {matchStat}
     </h3>
@@ -74,7 +74,7 @@ const MatchStatus = ({ matchStat, resetGamePlay }) => (
 
 const GameplayConfig = {
   "container-small": "w-[30%]",
-  "container-large": "w-[50%]",
+  "container-large": "md:w-[50%]",
 }
 
 const GamePlay = props => {
@@ -99,9 +99,9 @@ const GamePlay = props => {
 
   return (
     <section
-      className={`mt-16 ${GameplayConfig["container-large"]} transition-all`}
+      className={`mt-12 w-11/12 md:mt-16 ${GameplayConfig["container-large"]} transition-all`}
     >
-      <div className="flex w-full items-center justify-between transition-all">
+      <div className="flex w-full items-center justify-between transition-all ">
         <SymbolCard title="YOU PICKED" symbol={selectedSymbol} />
         <MatchStatus matchStat={matchStat} resetGamePlay={resetGamePlay} />
         <SymbolCard title="THE HOUSE PICKED" symbol={houseSymbol} />
