@@ -59,7 +59,7 @@ const SymbolCard = ({ title, symbol }) => (
 )
 
 const MatchStatus = ({ matchStat, resetGamePlay }) => (
-  <div className="absolute bottom-24 left-24 transition-all md:static md:flex md:flex-col md:items-center md:justify-center">
+  <div className="order-3 mx-auto mt-8 flex-col items-center justify-center transition-all md:static md:order-none md:flex">
     <h3 className="white font-barlow text-5xl font-extrabold text-white">
       {matchStat}
     </h3>
@@ -101,7 +101,7 @@ const GamePlay = props => {
     <section
       className={`mt-12 w-11/12 md:mt-16 ${GameplayConfig["container-large"]} transition-all`}
     >
-      <div className="flex w-full items-center justify-between transition-all ">
+      <div className="flex w-full flex-wrap items-center justify-between transition-all md:flex-nowrap">
         <SymbolCard title="YOU PICKED" symbol={selectedSymbol} />
         <MatchStatus matchStat={matchStat} resetGamePlay={resetGamePlay} />
         <SymbolCard title="THE HOUSE PICKED" symbol={houseSymbol} />

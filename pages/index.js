@@ -32,7 +32,7 @@ export default function Home() {
 
   const getMatchStatus = useCallback(() => {
     if (selectedSymbol === houseSymbol) {
-      setMatchStat("DRAW")
+      setMatchStat("MATCH DRAW")
     } else if (
       (selectedSymbol === SYMBOLS.PAPER && houseSymbol === SYMBOLS.ROCK) ||
       (selectedSymbol === SYMBOLS.ROCK && houseSymbol === SYMBOLS.SCISSOR) ||
