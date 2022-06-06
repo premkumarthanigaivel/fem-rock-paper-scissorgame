@@ -40,12 +40,10 @@ export default function Home() {
 			(selectedSymbol === SYMBOLS.SCISSOR &&
 				houseSymbol === SYMBOLS.PAPER)
 		) {
-			setMatchScore((prevScore) => prevScore + 1)
+			setMatchScore(matchScore + 1)
 			setMatchStat('YOU WON')
 		} else {
-			setMatchScore((prevScore) =>
-				prevScore < 1 ? prevScore : prevScore - 1
-			)
+			setMatchScore(matchScore < 1 ? matchScore : matchScore - 1)
 			setMatchStat('YOU LOSE')
 		}
 	}
