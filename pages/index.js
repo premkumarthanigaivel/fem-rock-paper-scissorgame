@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import ScoreBoard from 'components/ScoreBoard'
 import RulesModal from 'components/RulesModal'
 import RulesSection from 'components/RulesSection'
@@ -24,12 +24,12 @@ export default function Home() {
 	const [matchScore, setMatchScore] = useState(0)
 	const [matchStat, setMatchStat] = useState(null)
 
-	const resetGamePlay = useCallback(() => {
+	const resetGamePlay = () => {
 		setSelectedSymbol(null)
 		setHouseSymbol(generateHouseSymbol())
-	}, [setSelectedSymbol, setHouseSymbol])
+	}
 
-	const getMatchStatus = useCallback(() => {
+	const getMatchStatus = () => {
 		if (selectedSymbol === houseSymbol) {
 			setMatchStat('MATCH DRAW')
 		} else if (
@@ -48,7 +48,7 @@ export default function Home() {
 			)
 			setMatchStat('YOU LOSE')
 		}
-	}, [selectedSymbol, houseSymbol, setMatchScore, setMatchStat])
+	}
 
 	return (
 		<>

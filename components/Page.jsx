@@ -84,7 +84,11 @@ const GamePlay = (props) => {
 			return
 		}
 		getMatchStatus()
-	}, [selectedSymbol, houseSymbol, getMatchStatus])
+	}, [selectedSymbol, houseSymbol])
+
+	/* useEffect(() => {
+		if (selectedSymbol && houseSymbol) getMatchStatus()
+	}, [selectedSymbol, houseSymbol]) */
 
 	return (
 		<section
