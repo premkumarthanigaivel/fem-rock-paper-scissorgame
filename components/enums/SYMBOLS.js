@@ -1,7 +1,7 @@
 const SYMBOLS = {
-  PAPER: "Paper",
-  ROCK: "Rock",
-  SCISSOR: "Scissor",
+	PAPER: 'Paper',
+	ROCK: 'Rock',
+	SCISSOR: 'Scissor'
 }
 
 export default SYMBOLS
