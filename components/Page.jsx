@@ -73,6 +73,8 @@ const GamePlay = (props) => {
 		getMatchStatus
 	} = props
 
+	console.log('GamePlay render')
+
 	// const isFirst = useRef(true)
 
 	console.log('props: ', props)
