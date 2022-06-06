@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import Symbol from 'components/Symbol'
 import SYMBOLS from 'components/enums/SYMBOLS'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 const Page = {}
 
@@ -73,22 +73,22 @@ const GamePlay = (props) => {
 		getMatchStatus
 	} = props
 
-	const isFirst = useRef(true)
+	// const isFirst = useRef(true)
 
 	console.log('props: ', props)
 	console.log('matchStat: ', matchStat)
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		if (isFirst.current) {
 			isFirst.current = false
 			return
 		}
 		getMatchStatus()
-	}, [selectedSymbol, houseSymbol])
-
-	/* useEffect(() => {
-		if (selectedSymbol && houseSymbol) getMatchStatus()
 	}, [selectedSymbol, houseSymbol]) */
+
+	useEffect(() => {
+		if (selectedSymbol && houseSymbol) getMatchStatus()
+	}, [selectedSymbol, houseSymbol])
 
 	return (
 		<section
