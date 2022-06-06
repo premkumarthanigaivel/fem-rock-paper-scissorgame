@@ -87,14 +87,12 @@ const GamePlay = props => {
   } = props
 
   console.log("props: ", props)
-
+  console.log("useEffectSkipFirst: ", useEffectSkipFirst)
   console.log("matchStat: ", matchStat)
 
   useEffectSkipFirst(() => {
-    if (selectedSymbol && houseSymbol) {
-      console.log("CALLING: getMatchStatus ")
-      getMatchStatus()
-    }
+    console.log("CALLING: getMatchStatus ")
+    getMatchStatus()
   }, [selectedSymbol, houseSymbol, getMatchStatus])
 
   return (
