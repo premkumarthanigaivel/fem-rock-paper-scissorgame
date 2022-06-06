@@ -77,7 +77,6 @@ const GamePlay = props => {
   const isFirst = useRef(true)
 
   console.log("props: ", props)
-  console.log("useEffectSkipFirst: ", useEffectSkipFirst)
   console.log("matchStat: ", matchStat)
 
   useEffect(() => {
