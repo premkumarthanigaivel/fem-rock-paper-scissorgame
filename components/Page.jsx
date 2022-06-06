@@ -4,18 +4,6 @@ import SYMBOLS from "components/enums/SYMBOLS"
 import { useEffect, useRef } from "react"
 import React from "react"
 
-const useEffectSkipFirst = (func, deps) => {
-  const isFirst = useRef(true)
-  useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false
-      return
-    }
-    func()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
-}
-
 const Page = {}
 
 const SymbolSelector = ({ setSelectedSymbol }) => {
@@ -86,12 +74,17 @@ const GamePlay = props => {
     getMatchStatus,
   } = props
 
+  const isFirst = useRef(true)
+
   console.log("props: ", props)
   console.log("useEffectSkipFirst: ", useEffectSkipFirst)
   console.log("matchStat: ", matchStat)
 
-  useEffectSkipFirst(() => {
-    console.log("CALLING: getMatchStatus ")
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false
+      return
+    }
     getMatchStatus()
   }, [selectedSymbol, houseSymbol, getMatchStatus])
 
