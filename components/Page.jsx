@@ -7,7 +7,7 @@ const Page = {}
 
 const SymbolSelector = ({ setSelectedSymbol }) => {
 	return (
-		<section className="mt-12 w-[28rem]">
+		<section className="mt-12 w-96 md:w-[28rem]">
 			<div className="relative flex flex-col">
 				<img
 					src="bg-triangle.svg"
