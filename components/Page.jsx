@@ -36,18 +36,26 @@ const SymbolSelector = ({ setSelectedSymbol }) => {
 	)
 }
 
-const SymbolCard = ({ title, symbol }) => (
-	<div className="flex h-52 flex-col items-center justify-between transition-all md:h-60">
-		<h6 className="text-md text-white md:text-xl">{title}</h6>
-		{symbol === SYMBOLS.PAPER && <Symbol.Paper size="large" />}
-		{symbol === SYMBOLS.SCISSOR && <Symbol.Scissor size="large" />}
-		{symbol === SYMBOLS.ROCK && <Symbol.Rock size="large" />}
+const SymbolCard = ({ title, symbol, winner, gameDraw }) => (
+	<div className="flex h-52 flex-col items-center justify-between transition-all md:h-80">
+		<h6 className="text-md order-3 font-barlow tracking-wider text-white md:order-none md:text-2xl">
+			{title}
+		</h6>
+		{symbol === SYMBOLS.PAPER && (
+			<Symbol.Paper size="large" winner={winner} gameDraw={gameDraw} />
+		)}
+		{symbol === SYMBOLS.SCISSOR && (
+			<Symbol.Scissor size="large" winner={winner} gameDraw={gameDraw} />
+		)}
+		{symbol === SYMBOLS.ROCK && (
+			<Symbol.Rock size="large" winner={winner} gameDraw={gameDraw} />
+		)}
 	</div>
 )
 
 const MatchStatus = ({ matchStat, resetGamePlay }) => (
 	<div className="order-3 mx-auto mt-8 flex-col items-center justify-center transition-all md:static md:order-none md:flex">
-		<h3 className="white font-barlow text-5xl font-extrabold text-white">
+		<h3 className="white font-barlow text-5xl font-extrabold text-white md:text-[4rem]">
 			{matchStat}
 		</h3>
 		<div
@@ -61,7 +69,7 @@ const MatchStatus = ({ matchStat, resetGamePlay }) => (
 
 const GameplayConfig = {
 	'container-small': 'w-[30%]',
-	'container-large': 'md:w-[50%]'
+	'container-large': 'md:w-[65%]'
 }
 
 const GamePlay = (props) => {
@@ -70,23 +78,10 @@ const GamePlay = (props) => {
 		houseSymbol,
 		matchStat,
 		resetGamePlay,
-		getMatchStatus
+		getMatchStatus,
+		gameWon,
+		gameDraw
 	} = props
-
-	console.log('GamePlay render')
-
-	// const isFirst = useRef(true)
-
-	console.log('props: ', props)
-	console.log('matchStat: ', matchStat)
-
-	/* 	useEffect(() => {
-		if (isFirst.current) {
-			isFirst.current = false
-			return
-		}
-		getMatchStatus()
-	}, [selectedSymbol, houseSymbol]) */
 
 	useEffect(() => {
 		if (selectedSymbol && houseSymbol) getMatchStatus()
@@ -97,12 +92,22 @@ const GamePlay = (props) => {
 			className={`mt-12 w-11/12 md:mt-16 ${GameplayConfig['container-large']} transition-all`}
 		>
 			<div className="flex w-full flex-wrap items-center justify-between transition-all md:flex-nowrap">
-				<SymbolCard title="YOU PICKED" symbol={selectedSymbol} />
+				<SymbolCard
+					title="YOU PICKED"
+					symbol={selectedSymbol}
+					winner={gameWon}
+					gameDraw={gameDraw}
+				/>
 				<MatchStatus
 					matchStat={matchStat}
 					resetGamePlay={resetGamePlay}
 				/>
-				<SymbolCard title="THE HOUSE PICKED" symbol={houseSymbol} />
+				<SymbolCard
+					title="THE HOUSE PICKED"
+					symbol={houseSymbol}
+					winner={!gameWon}
+					gameDraw={gameDraw}
+				/>
 			</div>
 		</section>
 	)

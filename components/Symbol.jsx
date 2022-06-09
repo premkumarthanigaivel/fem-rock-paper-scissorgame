@@ -1,56 +1,73 @@
 const SymbolConfig = {
-	normal: 'md:h-44 md:w-44',
-	large: 'md:h-48 md:w-48',
-	winner: 'mix-blend-lighten shadow-[0px_0px_0px_50px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_100px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_150px_hsl(214deg_47%_23%_/_50%)]'
+	normal: 'md:h-44 md:w-44 border-[1.2rem]',
+	large: 'md:h-60 md:w-60 border-[1.2rem] md:border-[2rem]',
+	winner_paper:
+		'mix-blend-lighten shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(230deg_89%_62%),_0px_0px_0px_50px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%)] md:shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(230deg_89%_62%),_0px_0px_0px_60px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_120px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_180px_hsl(214deg_47%_23%_/_50%)]',
+	winner_rock:
+		'mix-blend-lighten shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(349,_71%,_52%),_0px_0px_0px_50px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%)] md:shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(349,_71%,_52%),_0px_0px_0px_60px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_120px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_180px_hsl(214deg_47%_23%_/_50%)]',
+	winner_scissor:
+		'mix-blend-lighten shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(39,_89%,_49%),_0px_0px_0px_50px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_75px_hsl(214deg_47%_23%_/_50%)] md:shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(39,_89%,_49%),_0px_0px_0px_60px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_120px_hsl(214deg_47%_23%_/_50%),_0px_0px_0px_180px_hsl(214deg_47%_23%_/_50%)]'
 }
 
 const Symbol = {}
 
-const Paper = ({ size = 'normal', winner = false, onClick }) => (
+const Paper = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 	<div
 		onClick={() => {
 			onClick && onClick()
 		}}
 		title="paper"
 		className={`z-10 flex h-36 w-36 ${SymbolConfig[size]} ${
-			winner && SymbolConfig.winner
+			winner && !gameDraw && SymbolConfig.winner_paper
 		} cursor-pointer items-center justify-center rounded-full 
-         border-[1.2rem] 
-         border-paper-outline bg-white shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(230deg_89%_62%)] hover:scale-110`}
+          
+         border-paper-outline bg-white ${
+				!winner &&
+				'shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(230deg_89%_62%)] hover:scale-110'
+			}`}
 	>
-		<img src="icon-paper.svg" alt="paper" className="select-none" />
+		<img src="icon-paper.svg" alt="paper" className="w-2/5 select-none" />
 	</div>
 )
 
-const Rock = ({ size = 'normal', winner = false, onClick }) => (
+const Rock = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 	<div
 		onClick={() => {
 			onClick && onClick()
 		}}
 		title="rock"
-		className={`z-10 mt-8 flex h-36 w-36 ${SymbolConfig[size]} ${
-			winner && SymbolConfig.winner
+		className={`z-10 flex h-36 w-36 ${SymbolConfig[size]} ${
+			winner && !gameDraw && SymbolConfig.winner_rock
 		} cursor-pointer items-center justify-center 
-               self-center rounded-full border-[1.2rem] 
-             border-rock-outline bg-white shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(349,_71%,_52%)] hover:scale-110`}
+               self-center rounded-full
+             border-rock-outline bg-white ${
+					!winner &&
+					'shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(349,_71%,_52%)] hover:scale-110'
+				}`}
 	>
-		<img src="icon-rock.svg" alt="rock" className="select-none" />
+		<img src="icon-rock.svg" alt="rock" className="w-2/5 select-none" />
 	</div>
 )
 
-const Scissor = ({ size = 'normal', winner = false, onClick }) => (
+const Scissor = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 	<div
 		onClick={() => {
 			onClick && onClick()
 		}}
 		title="scissors"
 		className={`z-10  flex h-36 w-36 ${SymbolConfig[size]} ${
-			winner && SymbolConfig.winner
-		} cursor-pointer items-center justify-center rounded-full 
-             border-[1.2rem] 
-             border-scissor-outline bg-white shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(39,_89%,_49%)] hover:scale-110`}
+			winner && !gameDraw && SymbolConfig.winner_scissor
+		} cursor-pointer items-center justify-center rounded-full
+             border-scissor-outline bg-white ${
+					!winner &&
+					'shadow-[inset_0px_8px_0px_0px_#b8bdd3,_0px_8px_0px_0px_hsl(39,_89%,_49%)] hover:scale-110'
+				}`}
 	>
-		<img src="icon-scissors.svg" alt="scissors" className="select-none" />
+		<img
+			src="icon-scissors.svg"
+			alt="scissors"
+			className="w-2/5 select-none"
+		/>
 	</div>
 )
 
