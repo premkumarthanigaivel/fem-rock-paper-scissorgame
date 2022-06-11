@@ -60,7 +60,7 @@ const MatchStatus = ({ matchStat, resetGamePlay }) => (
 		</h3>
 		<div
 			onClick={resetGamePlay}
-			className="mt-4  w-full scale-100 cursor-pointer rounded-md border-2 border-white bg-white px-8 py-2 text-center text-xs font-semibold  text-[hsl(349,_70%,_56%)] hover:border-0 hover:bg-[hsl(349,_70%,_56%)] hover:text-white"
+			className="mt-4  w-full scale-100 cursor-pointer rounded-md border-2 border-white bg-white px-8 py-2 text-center text-xs font-semibold  text-[hsl(349,_70%,_56%)] hover:border-[hsl(349,_70%,_56%)] hover:bg-[hsl(349,_70%,_56%)] hover:text-white"
 		>
 			PLAY AGAIN
 		</div>
