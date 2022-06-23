@@ -55,6 +55,10 @@ export default function Home() {
 		}
 	}
 
+	const closeModal = () => {
+		setRulesModalVisible(false)
+	}
+
 	return (
 		<>
 			<DocumentHead />
@@ -77,10 +81,12 @@ export default function Home() {
 					/>
 				)}
 				<RulesSection setModalVisible={setRulesModalVisible} />
-				<RulesModal
-					visible={rulesModalVisible}
-					setVisible={setRulesModalVisible}
-				/>
+				{rulesModalVisible && (
+					<RulesModal
+						visible={rulesModalVisible}
+						closeModal={closeModal}
+					/>
+				)}
 			</PageContainer>
 		</>
 	)

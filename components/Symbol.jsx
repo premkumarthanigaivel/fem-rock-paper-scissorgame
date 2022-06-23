@@ -17,7 +17,9 @@ const Paper = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 			onClick && onClick()
 		}}
 		title="paper"
-		className={`z-10 flex h-36 w-36 ${SymbolConfig[size]} ${
+		className={`animate__animated animate__fadeIn z-10 flex h-36 w-36 ${
+			SymbolConfig[size]
+		} ${
 			winner && !gameDraw && SymbolConfig.winner_paper
 		} cursor-pointer items-center justify-center rounded-full 
           
@@ -35,7 +37,9 @@ const Rock = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 			onClick && onClick()
 		}}
 		title="rock"
-		className={`z-10 flex h-36 w-36 ${SymbolConfig[size]} ${
+		className={`animate__animated animate__fadeIn z-10 flex h-36 w-36 ${
+			SymbolConfig[size]
+		} ${
 			winner && !gameDraw && SymbolConfig.winner_rock
 		} cursor-pointer items-center justify-center 
                self-center rounded-full
@@ -53,7 +57,9 @@ const Scissor = ({ size = 'normal', winner = false, gameDraw, onClick }) => (
 			onClick && onClick()
 		}}
 		title="scissors"
-		className={`z-10  flex h-36 w-36 ${SymbolConfig[size]} ${
+		className={`animate__animated animate__fadeIn z-10  flex h-36 w-36 ${
+			SymbolConfig[size]
+		} ${
 			winner && !gameDraw && SymbolConfig.winner_scissor
 		} cursor-pointer items-center justify-center rounded-full
              border-scissor-outline bg-white ${

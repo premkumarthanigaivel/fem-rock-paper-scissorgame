@@ -1,4 +1,4 @@
-const RulesModal = ({ visible, setVisible }) => {
+const RulesModal = ({ visible, closeModal }) => {
 	return (
 		<dialog
 			open={visible}
@@ -17,9 +17,7 @@ const RulesModal = ({ visible, setVisible }) => {
 					src="icon-close.svg"
 					alt=""
 					className="mt-auto mb-16 h-4 w-4 select-none hover:scale-110 md:absolute md:top-4 md:right-4"
-					onClick={() => {
-						setVisible(false)
-					}}
+					onClick={closeModal}
 				/>
 			</div>
 		</dialog>

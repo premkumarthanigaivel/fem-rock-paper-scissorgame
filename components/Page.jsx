@@ -2,6 +2,7 @@
 import Symbol from 'components/Symbol'
 import SYMBOLS from 'components/enums/SYMBOLS'
 import { useEffect } from 'react'
+import 'animate.css'
 
 const Page = {}
 
