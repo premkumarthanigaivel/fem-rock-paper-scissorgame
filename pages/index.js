@@ -25,16 +25,25 @@ export default function Home() {
 	const [matchStat, setMatchStat] = useState(null)
 	const [gameWon, setGameWon] = useState(false)
 	const [gameDraw, setGameDraw] = useState(false)
+	const [showMatchStatus, setShowMatchStatus] = useState(false)
+	const [showHousePicked, setShowHousePicked] = useState(false)
 
 	const resetGamePlay = () => {
 		setSelectedSymbol(null)
 		setHouseSymbol(generateHouseSymbol())
+		setMatchStat(null)
+		setGameWon(false)
+		setGameDraw(false)
 	}
 
 	const getMatchStatus = () => {
+		setShowMatchStatus(false)
+		setShowHousePicked(false)
 		if (selectedSymbol === houseSymbol) {
-			setGameDraw(true)
-			setMatchStat('MATCH DRAW')
+			setTimeout(() => {
+				setGameDraw(true)
+				setMatchStat('MATCH DRAW')
+			}, 2000)
 		} else if (
 			(selectedSymbol === SYMBOLS.PAPER &&
 				houseSymbol === SYMBOLS.ROCK) ||
@@ -43,16 +52,24 @@ export default function Home() {
 			(selectedSymbol === SYMBOLS.SCISSOR &&
 				houseSymbol === SYMBOLS.PAPER)
 		) {
-			setMatchScore(matchScore + 1)
-			setGameWon(true)
-			setGameDraw(false)
-			setMatchStat('YOU WON')
+			setTimeout(() => {
+				setMatchScore(matchScore + 1)
+				setGameWon(true)
+				setGameDraw(false)
+				setMatchStat('YOU WON')
+			}, 2000)
 		} else {
-			setMatchScore(matchScore < 1 ? matchScore : matchScore - 1)
-			setGameWon(false)
-			setGameDraw(false)
-			setMatchStat('YOU LOSE')
+			setTimeout(() => {
+				setMatchScore(matchScore < 1 ? matchScore : matchScore - 1)
+				setGameWon(false)
+				setGameDraw(false)
+				setMatchStat('YOU LOSE')
+			}, 2000)
 		}
+		setTimeout(() => {
+			setShowHousePicked(true)
+			setShowMatchStatus(true)
+		}, 2000)
 	}
 
 	const closeModal = () => {
@@ -78,6 +95,8 @@ export default function Home() {
 						getMatchStatus={getMatchStatus}
 						gameWon={gameWon}
 						gameDraw={gameDraw}
+						showMatchStatus={showMatchStatus}
+						showHousePicked={showHousePicked}
 					/>
 				)}
 				<RulesSection setModalVisible={setRulesModalVisible} />

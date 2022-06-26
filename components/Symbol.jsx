@@ -1,6 +1,6 @@
 const SymbolConfig = {
 	normal: 'md:h-44 md:w-44 border-[1.2rem]',
-	large: 'md:h-60 md:w-60 border-[1.2rem] md:border-[2rem]',
+	large: 'mx-20 md:h-60 md:w-60 border-[1.2rem] md:border-[2rem]',
 	winner_paper:
 		'mix-blend-lighten scale-110 shadow-paper-win-mobile md:shadow-paper-win-desktop',
 	winner_rock:

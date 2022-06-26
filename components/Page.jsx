@@ -51,11 +51,14 @@ const SymbolCard = ({ title, symbol, winner, gameDraw }) => (
 		{symbol === SYMBOLS.ROCK && (
 			<Symbol.Rock size="large" winner={winner} gameDraw={gameDraw} />
 		)}
+		{symbol === 'placeholder' && (
+			<div className="z-10 flex h-36 w-36 cursor-pointer items-center justify-center rounded-full border-[1.2rem] border-black bg-black md:h-60 md:w-60 md:border-[2rem] " />
+		)}
 	</div>
 )
 
 const MatchStatus = ({ matchStat, resetGamePlay }) => (
-	<div className="order-3 mx-auto mt-8 flex-col items-center justify-center transition-all md:static md:order-none md:flex">
+	<div className="animate__animated animate__pulse order-3 mx-auto mt-8 flex-col items-center justify-center transition-all md:static md:order-none md:flex">
 		<h3 className="white font-barlow text-5xl font-extrabold text-white md:text-[4rem]">
 			{matchStat}
 		</h3>
@@ -70,7 +73,7 @@ const MatchStatus = ({ matchStat, resetGamePlay }) => (
 
 const GameplayConfig = {
 	'container-small': 'w-[30%]',
-	'container-large': 'md:w-[65%]'
+	'container-large': 'md:w-auto'
 }
 
 const GamePlay = (props) => {
@@ -81,7 +84,9 @@ const GamePlay = (props) => {
 		resetGamePlay,
 		getMatchStatus,
 		gameWon,
-		gameDraw
+		gameDraw,
+		showMatchStatus,
+		showHousePicked
 	} = props
 
 	useEffect(() => {
@@ -90,22 +95,24 @@ const GamePlay = (props) => {
 
 	return (
 		<section
-			className={`mt-12 w-11/12 md:mt-16 ${GameplayConfig['container-large']} transition-all`}
+			className={`mt-12 w-11/12 transition-all md:mt-16 ${GameplayConfig['container-large']} transition-all`}
 		>
-			<div className="flex w-full flex-wrap items-center justify-between transition-all md:flex-nowrap">
+			<div className="flex w-full flex-wrap items-center justify-between md:flex-nowrap">
 				<SymbolCard
 					title="YOU PICKED"
 					symbol={selectedSymbol}
 					winner={gameWon}
 					gameDraw={gameDraw}
 				/>
-				<MatchStatus
-					matchStat={matchStat}
-					resetGamePlay={resetGamePlay}
-				/>
+				{showMatchStatus && (
+					<MatchStatus
+						matchStat={matchStat}
+						resetGamePlay={resetGamePlay}
+					/>
+				)}
 				<SymbolCard
 					title="THE HOUSE PICKED"
-					symbol={houseSymbol}
+					symbol={showHousePicked ? houseSymbol : 'placeholder'}
 					winner={!gameWon}
 					gameDraw={gameDraw}
 				/>
